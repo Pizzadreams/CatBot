@@ -28,6 +28,17 @@ async def cat(ctx):
     else:
         await ctx.send('Failed to fetch cat image.')
 
+# Command that detects the cat emoji, and returns a random cat image if cat emoji is present
+async def on_message(message):
+    if '🐱' in message.content:
+        cat_image_url = get_random_cat_image()
+        if cat_image_url:
+            await message.channel.send(cat_image_url)
+        else:
+            await message.channel.send('Failed to get a cat image. Meow!')
+
+    await bot.process_commands(message)
+
 # Event handling
 @bot.command()
 async def my_command(ctx):
