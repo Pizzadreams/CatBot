@@ -39,6 +39,15 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+def get_random_cat_image():
+    response = requests.get('https://api.thecatapi.com/v1/images/search')
+    if response.status_code == 200:
+        cat_data = response.json()
+        if cat_data:
+            cat_image_url = cat_data[0]['url']
+            return cat_image_url
+    return None
+
 # Event handling
 @bot.command()
 async def my_command(ctx):
