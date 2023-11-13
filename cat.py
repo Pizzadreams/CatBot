@@ -26,7 +26,7 @@ async def cat(ctx, breed_id = None):
     print(response.status_code)
     print(response.content)
 
-    # If the response is in JSON format, and parse
+    # Parsing the response
     data = response.json()
     print(data)
 

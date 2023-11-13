@@ -6,7 +6,7 @@
 
 * Find a Cat Image API: Look for a Cat Image API that provides random cat images. There are several APIs available, such as thecatapi.com or random.cat, which allows me to fetch random cat images programmatically.
 
-* Set up a Backend Server: Create a backend server using Python. This server will act as a bridge between the Discord bot and the Cat Image API. Use Flask to create the server.
+* Set up a Backend Server: Create a backend server using Python. This server will act as a bridge between the Discord bot and the Cat Image API.
 
 * Integrate the Cat Image API: Write the necessary code in the backend server to fetch random cat images from the chosen Cat Image API. Make HTTP requests to the API's endpoints and retrieving the image URLs.
 
