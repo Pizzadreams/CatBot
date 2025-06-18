@@ -27,7 +27,7 @@
 #### Update: June 2025
 * Implement testing
 
-##### Testing
+#### Testing
 
 Automated tests are implemented using [pytest](https://pytest.org/).  
 To run the tests, make sure you have pytest installed:
