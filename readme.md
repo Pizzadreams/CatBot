@@ -23,3 +23,24 @@
 * Deploy the Backend: Deploy backend server to a hosting platform or a server that is publicly accessible. Allow Discord to communicate with server and retrieve random cat images.
 
 * Test and Use the Bot: Test the Discord bot in server by triggering the command of your choice to generate a random cat image. 
+
+#### Update: June 2025
+* Implement testing
+
+##### Testing
+
+Automated tests are implemented using [pytest](https://pytest.org/).  
+To run the tests, make sure you have pytest installed:
+
+```sh
+pip install pytest
+```
+
+Then, run the following command in the project directory:
+
+```sh
+pytest
+```
+
+Tests are written to verify the core logic of the bot, including API calls and command responses.  
+External dependencies such as API requests are mocked to ensure tests are fast and reliable.
