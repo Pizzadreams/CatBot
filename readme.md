@@ -24,23 +24,11 @@
 
 * Test and Use the Bot: Test the Discord bot in server by triggering the command of your choice to generate a random cat image. 
 
-#### Update: June 2025
-* Implement testing
+#### July 2025 Update
+- **Modification to `!cat` Command**: The `!cat` command now includes an optional parameter for specifying the number of cat images to fetch. Users can request up to 5 images at a time. If a number greater than 5 is provided, no images will be returned.
 
-#### Testing
-
-Automated tests are implemented using [pytest](https://pytest.org/).  
-To run the tests, make sure you have pytest installed:
-
-```sh
-pip install pytest
-```
-
-Then, run the following command in the project directory:
-
-```sh
-pytest
-```
-
-Tests are written to verify the core logic of the bot, including API calls and command responses.  
-External dependencies such as API requests are mocked to ensure tests are fast and reliable.
+##### Examples:
+- `!cat` - Returns 1 random cat image.
+- `!cat 2` - Returns 2 random cat images.
+- `!cat 5` - Returns 5 random cat images.
+- `!cat 10` - Returns no images (exceeds the maximum limit).

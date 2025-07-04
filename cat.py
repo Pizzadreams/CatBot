@@ -11,34 +11,39 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 api_key = catConfig.get_api_key()
 
 @bot.command()
-async def cat(ctx, breed_id = None):
+async def cat(ctx, count: int = 1, breed_id: str = None):
     url = "https://api.thecatapi.com/v1/images/search"
-
     headers = {
         "x-api-key": api_key
     }
 
-    if breed_id:
-        url += f"?breed_ids={breed_id}"
+    if count > 5:
+        await ctx.send("You can request up to 5 cat images at a time. Please reduce the limit to at most 5.")
+        return
+    
+    elif count < 1:
+        await ctx.send("You must request at least 1 cat image. Showing 1 image.")
+        count = 1
 
-    response = requests.get(url, headers = headers)
+    if breed_id:
+        url += f"?breed_ids={breed_id}&limit={count}"
+    else:
+        url += f"?limit={count}"
+
+    response = requests.get(url, headers=headers)
     
     print(response.status_code)
     print(response.content)
 
-    # Parsing the response
-    data = response.json()
-    print(data)
-
     if response.status_code == 200:
         cat_data = response.json()
         if cat_data:
-            cat_image_url = random.choice(cat_data)["url"]
-            await ctx.send(cat_image_url)
+            cat_image_urls = [cat["url"] for cat in cat_data]
+            await ctx.send("\n".join(cat_image_urls))  # Send all URLs in one message
         else:
-            await ctx.send("No cat image found.")
+            await ctx.send("No cat images found.")
     else:
-        await ctx.send("Failed to fetch cat image.")
+        await ctx.send("Failed to fetch cat images.")
 
 # Command that detects the cat emoji, and returns a random cat image if cat emoji is present
 @bot.event
