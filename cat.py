@@ -21,7 +21,7 @@ async def cat(ctx, count: int = 1, breed_id: str = None):
         await ctx.send("You can request up to 5 cat images at a time. Please reduce the limit to at most 5.")
         return
     
-    elif count < 1:
+    if count < 1:
         await ctx.send("You must request at least 1 cat image. Showing 1 image.")
         count = 1
 
